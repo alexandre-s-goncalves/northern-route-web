@@ -11,7 +11,7 @@ exports[`Button.styles > LoadingSpinner SHOULD match snapshot > keyframe animati
 exports[`Button.styles > StyledButton SHOULD match snapshot > standard background gradient layout render 1`] = `
 <div>
   <button
-    class="sc-bdvwhi iRwNXc"
+    class="sc-bdvwhi izJMAE"
   />
 </div>
 `;
