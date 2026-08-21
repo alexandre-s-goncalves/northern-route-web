@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input.styles > IconContainer SHOULD match snapshot > icon layout render 1`] = `
+<div>
+  <div
+    class="sc-gsDMPd OjRZh"
+  />
+</div>
+`;
+
+exports[`Input.styles > InputWrapper SHOULD match snapshot WHEN hasError is active > error border constraint evaluation 1`] = `
+<div>
+  <div
+    class="sc-bdvwhi jtRbrP"
+  />
+</div>
+`;
+
+exports[`Input.styles > InputWrapper SHOULD match snapshot with default properties > standard render 1`] = `
+<div>
+  <div
+    class="sc-bdvwhi eDUDpw"
+  />
+</div>
+`;
+
+exports[`Input.styles > StyledInput SHOULD match snapshot > native element override render 1`] = `
+<div>
+  <input
+    class="sc-dkPwfY kctkpA"
+  />
+</div>
+`;

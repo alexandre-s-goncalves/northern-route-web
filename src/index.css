@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Outfit-Bold';
+  font-style: normal;
+  src: local('Outfit-Bold'), url(../src/assets/fonts/Outfit-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Outfit-SemiBold';
+  font-style: normal;
+  src: local('Outfit-SemiBold'), url(../src/assets/fonts/Outfit-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Outfit-Regular';
+  font-style: normal;
+  src: local('Outfit-Regular'), url(../src/assets/fonts/Outfit-Regular.ttf);
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;

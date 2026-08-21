@@ -52,7 +52,9 @@ export const Input = styled.input`
   padding: 10px 12px;
   outline: none;
 
-  &:focus { border-color: #3b82f6; }
+  &:focus {
+    border-color: #3b82f6;
+  }
 `;
 
 export const Button = styled.button`
