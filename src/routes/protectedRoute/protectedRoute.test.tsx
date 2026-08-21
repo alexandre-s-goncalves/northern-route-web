@@ -1,8 +1,8 @@
 import { describe, test, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import { RoutePaths } from 'resources/enum';
 import { ProtectedRoute } from './protectedRoute';
+import { RoutePaths } from 'resources/routePaths';
 
 describe('Routes - ProtectedRoute Unit Tests', () => {
   beforeEach(() => {
@@ -22,12 +22,12 @@ describe('Routes - ProtectedRoute Unit Tests', () => {
               </ProtectedRoute>
             }
           />
-          <Route 
-            path={RoutePaths.LOGIN} 
-            element={<div data-testid="login-page">Login Page</div>} 
+          <Route
+            path={RoutePaths.LOGIN}
+            element={<div data-testid="login-page">Login Page</div>}
           />
         </Routes>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.queryByTestId('private-content')).not.toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('Routes - ProtectedRoute Unit Tests', () => {
             }
           />
         </Routes>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByTestId('private-content')).toBeInTheDocument();

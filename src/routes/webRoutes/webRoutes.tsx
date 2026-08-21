@@ -1,8 +1,8 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { Login } from 'pages/Login/Login';
 import { Home } from 'pages/Home/Home';
-import { RoutePaths } from 'resources/enum';
 import { ProtectedRoute } from 'routes/protectedRoute';
+import { RoutePaths } from 'resources/routePaths';
 
 export const webRoutes = createBrowserRouter([
   {

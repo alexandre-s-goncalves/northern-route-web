@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { RoutePaths } from 'resources/enum';
+import { RoutePaths } from 'resources/routePaths';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -15,4 +15,3 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
   return <>{children}</>;
 };
-

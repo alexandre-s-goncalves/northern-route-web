@@ -1,0 +1,41 @@
+export const colors = {
+  'green-900': '#006b3f',
+  'green-500': '#079d56',
+  'green-300': '#54bc82',
+
+  'orange-900': '#ef7e18',
+  'orange-500': '#ff8b22',
+  'orange-300': '#ffa952',
+
+  'mint-500': '#00d38d',
+  'lime-500': '#81eb5b',
+  'amber-400': '#ffb81a',
+  'yellow-400': '#fdcd0b',
+  'purple-700': '#793f98',
+  'purple-500': '#ac41d8',
+  'pink-600': '#f7287c',
+  'pink-400': '#ff5aad',
+
+  'neutral-950': '#242625',
+  'neutral-900': '#111312',
+  'neutral-800': '#434645',
+  'neutral-700': '#5d615f',
+  'neutral-500': '#999e9c',
+  'neutral-200': '#d9dddb',
+  'neutral-100': '#f0f2f1',
+  'neutral-0': '#ffffff',
+
+  'success-500': '#38c783',
+  'warning-400': '#ffb81a',
+  'error-500': '#e04c36',
+  'danger-300': '#f4715d',
+  'danger-200': '#f49788',
+
+  'surface-100': '#edf2f0',
+  'surface-200': '#f7f5f2',
+  'surface-300': '#f2f2f2',
+  'surface-glass': 'rgba(36, 38, 37, 0.65)',
+  'surface-input': 'rgba(17, 19, 18, 0.4)',
+  'border-glass': 'rgba(255, 255, 255, 0.1)',
+  'border-glass-thick': 'rgba(255, 255, 255, 0.15)',
+} as const;

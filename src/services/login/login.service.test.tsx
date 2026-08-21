@@ -1,8 +1,11 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { apiClient } from 'infrastructure/api/apiClient';
-import { type ApiResult, type LoginRequest, type LoginResponse } from 'infrastructure/index';
+import {
+  type ApiResult,
+  type LoginRequest,
+  type LoginResponse,
+} from 'infrastructure/index';
 import { loginUser } from './login.service';
-
 
 vi.mock('infrastructure/api/apiClient', () => ({
   apiClient: {
@@ -54,7 +57,9 @@ describe('Services - LoginService Unit Tests', () => {
       data: null,
     };
 
-    vi.mocked(apiClient.post).mockResolvedValueOnce({ data: mockErrorResponse });
+    vi.mocked(apiClient.post).mockResolvedValueOnce({
+      data: mockErrorResponse,
+    });
 
     const result = await loginUser(mockRequest);
 

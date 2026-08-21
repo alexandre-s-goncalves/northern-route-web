@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Text.styles > TextStyled SHOULD match snapshot with all custom overrides active > complete property injector evaluation 1`] = `
+<div>
+  <span
+    class="sc-bdvwhi bZMZJW"
+    color="#079d56"
+  />
+</div>
+`;
+
+exports[`Text.styles > TextStyled SHOULD match snapshot with default properties > standard render 1`] = `
+<div>
+  <span
+    class="sc-bdvwhi cyiuXj"
+  />
+</div>
+`;

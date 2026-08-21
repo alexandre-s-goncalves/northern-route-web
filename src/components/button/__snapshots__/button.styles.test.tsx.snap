@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button.styles > LoadingSpinner SHOULD match snapshot > keyframe animation vector render 1`] = `
+<div>
+  <div
+    class="sc-gsDMPd ieZNNX"
+  />
+</div>
+`;
+
+exports[`Button.styles > StyledButton SHOULD match snapshot > standard background gradient layout render 1`] = `
+<div>
+  <button
+    class="sc-bdvwhi izJMAE"
+  />
+</div>
+`;
