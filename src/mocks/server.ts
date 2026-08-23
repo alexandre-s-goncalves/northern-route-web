@@ -63,13 +63,13 @@ app.listen(PORT, () => {
 app.post('/api/auth/login', (req, res) => {
   const { email, passwordHash } = req.body;
 
-  if (email === 'driver@test.com' && passwordHash === 'Secure123') {
+  if (email === 'test@test.com' && passwordHash === 'Test123') {
     const generatedToken = jwt.sign(
       {
         sub: 'mock-id-123',
-        name: 'Alexandre Santos',
-        email: 'driver@test.com',
-        role: 'DRIVER',
+        name: 'Test test',
+        email: 'test@test.com',
+        role: 'ADMIN',
       },
       JWT_SECRET,
       { expiresIn: '1h' },

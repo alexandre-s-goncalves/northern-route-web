@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/react';
+import 'jest-styled-components';
 import * as S from './text.styles';
 
 describe('Text.styles', () => {

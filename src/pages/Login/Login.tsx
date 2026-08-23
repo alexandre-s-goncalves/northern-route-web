@@ -1,9 +1,8 @@
 import { useActionState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from 'hooks/useAuth';
-
-import * as S from './Login.styles';
 import { RoutePaths } from 'resources/routePaths';
+import * as S from './Login.styles';
 
 interface FormState {
   error: string | null;
@@ -46,42 +45,34 @@ export const Login = () => {
   }, [state?.isSuccess, navigate]);
 
   return (
-    <S.Container>
-      <S.FormCard action={formAction}>
-        <S.Title>NorthernRoute Logistics</S.Title>
-
-        <S.InputGroup>
-          <S.Label htmlFor="email">Email</S.Label>
-          <S.Input
-            id="email"
-            name="email"
-            type="email"
-            key={`email-${state?.values.email}`}
+    <S.PageWrapper>
+      <S.GlassCard action={formAction}>
+        <S.HeaderContainer>
+          <S.TextTitle>Welcome</S.TextTitle>
+        </S.HeaderContainer>
+        <S.FieldsContainer>
+          <S.InputEmail
+            testId="input-email"
             defaultValue={state?.values.email}
             disabled={isPending}
-            required
+            hasError={!!state?.error}
           />
-        </S.InputGroup>
-
-        <S.InputGroup>
-          <S.Label htmlFor="password">Password</S.Label>
-          <S.Input
-            id="password"
-            name="password"
-            type="password"
-            key={`pass-${state?.values.password}`}
-            defaultValue={state?.values.password}
+          <S.InputPassword
+            testId="input-password"
             disabled={isPending}
-            required
+            hasError={!!state?.error}
           />
-        </S.InputGroup>
-
-        <S.Button type="submit" disabled={isPending}>
-          {isPending ? <S.LoadingSpinner /> : 'Sign In'}
-        </S.Button>
-
-        {state?.error && <S.ErrorMessage>{state.error}</S.ErrorMessage>}
-      </S.FormCard>
-    </S.Container>
+        </S.FieldsContainer>
+        <S.ActionsRow>
+          <S.TextForgotPassword>Forgot Password?</S.TextForgotPassword>
+        </S.ActionsRow>
+        <S.ButtonLogin testId="button-login" isLoading={isPending}>
+          LOGIN
+        </S.ButtonLogin>
+        <S.ErrorContainer>
+          {state?.error && <S.TextError>{state.error}</S.TextError>}
+        </S.ErrorContainer>
+      </S.GlassCard>
+    </S.PageWrapper>
   );
 };

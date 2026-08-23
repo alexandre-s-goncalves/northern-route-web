@@ -1,57 +1,66 @@
-import { describe, test, expect, beforeEach, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { afterEach, describe, expect, test } from 'vitest';
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import { render } from '@testing-library/react';
 import { ProtectedRoute } from './protectedRoute';
-import { RoutePaths } from 'resources/routePaths';
 
-describe('Routes - ProtectedRoute Unit Tests', () => {
-  beforeEach(() => {
+describe('ProtectedRoute', () => {
+  let component: ReturnType<typeof render>;
+
+  afterEach(() => {
+    component.unmount();
     localStorage.clear();
-    vi.clearAllMocks();
   });
 
-  test('WHEN token is missing SHOULD redirect to login page', () => {
-    render(
-      <MemoryRouter initialEntries={[RoutePaths.HOME]}>
-        <Routes>
-          <Route
-            path={RoutePaths.HOME}
-            element={
-              <ProtectedRoute>
-                <div data-testid="private-content">Private Content</div>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={RoutePaths.LOGIN}
-            element={<div data-testid="login-page">Login Page</div>}
-          />
-        </Routes>
-      </MemoryRouter>,
-    );
+  describe('Rendering Scenarios', () => {
+    test('WHEN authentication session token is active SHOULD render target child route context successfully', () => {
+      localStorage.setItem(
+        '@NorthernRoute:token',
+        'mock-valid-jwt-token-string',
+      );
 
-    expect(screen.queryByTestId('private-content')).not.toBeInTheDocument();
-    expect(screen.getByTestId('login-page')).toBeInTheDocument();
-  });
+      const routes = [
+        {
+          children: [
+            {
+              element: (
+                <div data-testid="private-content">Dashboard Content</div>
+              ),
+              path: '/',
+            },
+          ],
+          element: <ProtectedRoute />,
+        },
+      ];
 
-  test('WHEN token is present SHOULD render children components', () => {
-    localStorage.setItem('@NorthernRoute:token', 'valid-token');
+      const router = createMemoryRouter(routes, { initialEntries: ['/'] });
+      component = render(<RouterProvider router={router} />);
 
-    render(
-      <MemoryRouter initialEntries={[RoutePaths.HOME]}>
-        <Routes>
-          <Route
-            path={RoutePaths.HOME}
-            element={
-              <ProtectedRoute>
-                <div data-testid="private-content">Private Content</div>
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </MemoryRouter>,
-    );
+      expect(component.getByTestId('private-content')).toBeInTheDocument();
+    });
 
-    expect(screen.getByTestId('private-content')).toBeInTheDocument();
+    test('WHEN authentication session token is missing SHOULD intercept pipeline and redirect target user back to login boundary', () => {
+      const routes = [
+        {
+          children: [
+            {
+              element: <div>Dashboard</div>,
+              path: '/home',
+            },
+          ],
+          element: <ProtectedRoute />,
+        },
+        {
+          element: (
+            <div data-testid="login-boundary">Login Terminal Screen</div>
+          ),
+          path: '/login',
+        },
+      ];
+
+      const router = createMemoryRouter(routes, { initialEntries: ['/home'] });
+      component = render(<RouterProvider router={router} />);
+
+      expect(component.getByTestId('login-boundary')).toBeInTheDocument();
+    });
   });
 });
