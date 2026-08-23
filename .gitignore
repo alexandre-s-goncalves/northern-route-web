@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 .env
+e2e-results
 
 # Husky cache
 --version

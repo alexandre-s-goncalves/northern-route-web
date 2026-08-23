@@ -1,6 +1,7 @@
 {
   "ignore": {
     "files": [
+      "e2e/**",
       "src/mocks/**",
       "**/*.test.ts",
       "**/*.test.tsx",

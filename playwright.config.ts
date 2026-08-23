@@ -1,49 +1,41 @@
+/// <reference types="node" />
 import { defineConfig, devices } from '@playwright/test';
 
-const isCI =
-  typeof process !== 'undefined' && !!process.env && !!process.env.CI;
-
-const projects = isCI
-  ? [
-      {
-        name: 'chromium-desktop',
-        use: { ...devices['Desktop Chrome'] },
-      },
-    ]
-  : [
-      {
-        name: 'chromium-desktop',
-        use: { ...devices['Desktop Chrome'] },
-      },
-      {
-        name: 'webkit-desktop',
-        use: { ...devices['Desktop Safari'] },
-      },
-      {
-        name: 'mobile-iphone',
-        use: { ...devices['iPhone 14'] },
-      },
-      {
-        name: 'mobile-android',
-        use: { ...devices['Pixel 7'] },
-      },
-    ];
+const isCI = typeof process !== 'undefined' && !!process.env.CI;
 
 export default defineConfig({
-  testDir: './E2E',
-  fullyParallel: true,
+  expect: {
+    timeout: 5000,
+  },
   forbidOnly: isCI,
+  fullyParallel: true,
+  outputDir: './e2e-results',
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+  ],
+  reporter: 'list',
   retries: isCI ? 2 : 0,
-  workers: isCI ? 1 : '100%',
-  reporter: 'html',
+  testDir: './e2e',
+  testMatch: '**/*.e2e.ts',
+  timeout: 30000,
   use: {
-    baseURL: 'http://localhost:4173',
+    baseURL: 'http://localhost:5173',
     trace: 'on-first-retry',
   },
-  projects,
   webServer: {
-    command: 'npm run build && npm run preview',
-    url: 'http://localhost:4173',
+    command: 'npm run dev',
     reuseExistingServer: !isCI,
+    url: 'http://localhost:5173',
   },
 });
