@@ -1,92 +1,163 @@
-import styled, { keyframes } from 'styled-components';
+import LockSVG from 'assets/icons/iLock.svg?react';
+import UserSVG from 'assets/icons/iUser.svg?react';
+import { Button } from 'components/button';
+import { Input } from 'components/input';
+import { Text } from 'components/text';
+import { alpha } from 'utils/alpha';
+import { colors } from 'resources/colors';
+import { spaces } from 'resources/spaces';
+import styled from 'styled-components';
 
-const rotate = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
-
-export const Container = styled.div`
+export const ActionsRow = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #0f172a;
-`;
-
-export const FormCard = styled.form`
-  display: flex;
-  flex-direction: column;
-  background-color: #1e293b;
-  padding: 32px;
-  border-radius: 8px;
+  justify-content: flex-end;
+  margin-bottom: ${spaces.medium}px;
+  padding: 0 ${spaces.xxsmall}px;
   width: 100%;
-  max-width: 400px;
 `;
 
-export const Title = styled.h1`
-  color: #3b82f6;
-  font-size: 1.5rem;
-  margin-bottom: 24px;
-  text-align: center;
+export const ButtonLogin = styled(Button).attrs({
+  type: 'submit',
+})`
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
-export const InputGroup = styled.div`
+export const ErrorContainer = styled.div`
+  align-items: center;
+  display: flex;
+  height: ${spaces.xsmall}px;
+  justify-content: center;
+  margin-top: ${spaces.small}px;
+`;
+
+export const FieldsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  gap: ${spaces.small}px;
+  margin-bottom: ${spaces.small}px;
+  width: 100%;
 `;
 
-export const Label = styled.label`
-  color: #94a3b8;
-  font-size: 0.875rem;
-  margin-bottom: 6px;
-`;
-
-export const Input = styled.input`
-  background-color: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 4px;
-  color: #f8fafc;
-  padding: 10px 12px;
-  outline: none;
-
-  &:focus {
-    border-color: #3b82f6;
-  }
-`;
-
-export const Button = styled.button`
-  background-color: #3b82f6;
-  color: #f8fafc;
-  border: none;
-  border-radius: 4px;
-  padding: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
+export const GlassCard = styled.form`
   align-items: center;
+  backdrop-filter: blur(${spaces.small}px);
+  background-color: ${alpha(colors['surface-glass'], 65)};
+  border: 1px solid ${alpha(colors['neutral-0'], 10)};
+  border-radius: ${spaces.small}px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px ${alpha(colors['neutral-900'], 40)};
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  padding: ${spaces.large}px ${spaces.xlarge}px ${spaces.xlarge}px
+    ${spaces.xlarge}px;
+  width: 100%;
+  -webkit-backdrop-filter: blur(${spaces.small}px);
+`;
 
-  &:disabled {
-    background-color: #64748b;
-    cursor: not-allowed;
+export const HeaderContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: ${spaces.large}px;
+  width: 100%;
+`;
+
+export const InputEmail = styled(Input).attrs({
+  autoComplete: 'username',
+  id: 'email',
+  icon: { color: colors['neutral-700'], icon: UserSVG },
+  name: 'email',
+  placeholder: 'Username',
+  required: true,
+  type: 'email',
+})``;
+
+export const InputPassword = styled(Input).attrs({
+  autoComplete: 'current-password',
+  id: 'password',
+  icon: { color: colors['neutral-700'], icon: LockSVG },
+  name: 'password',
+  placeholder: 'Password',
+  required: true,
+  type: 'password',
+})``;
+
+export const PageWrapper = styled.div`
+  align-items: center;
+  background:
+    radial-gradient(
+      circle at top right,
+      ${colors['bg-ambient-violet']},
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      ${colors['bg-ambient-teal']},
+      ${colors['bg-ambient-deep']} 80%
+    );
+  background-color: ${colors['bg-ambient-dark']};
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100vw;
+`;
+
+export const TextError = styled(Text).attrs({
+  align: 'center',
+  color: colors['error-500'],
+  size: 12,
+  variant: 'semibold',
+})``;
+
+export const TextForgotPassword = styled(Text).attrs({
+  align: 'right',
+  color: colors['neutral-500'],
+  cursor: 'pointer',
+  size: 12,
+  transform: 'capitalize',
+  variant: 'regular',
+})`
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
-export const LoadingSpinner = styled.div`
-  width: 18px;
-  height: 18px;
-  border: 2px solid #f8fafc;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: ${rotate} 0.6s linear infinite;
-`;
+export const TextTitle = styled(Text).attrs({
+  align: 'center',
+  color: colors['neutral-200'],
+  size: 32,
+  transform: 'uppercase',
+  variant: 'regular',
+})`
+  display: inline-block;
+  padding-bottom: ${spaces.small}px;
+  position: relative;
+  width: 100%;
 
-export const ErrorMessage = styled.p`
-  color: #ef4444;
-  font-size: 0.875rem;
-  margin-top: 12px;
-  text-align: center;
+  &::after {
+    background: linear-gradient(
+      to right,
+      transparent,
+      ${colors['neutral-700']},
+      transparent
+    );
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+  }
 `;

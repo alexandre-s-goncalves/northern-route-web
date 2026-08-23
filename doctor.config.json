@@ -1,5 +1,12 @@
 {
-  "$schema": "https://react.doctor/schemas/doctor.config.json",
+  "ignore": {
+    "files": [
+      "src/mocks/**",
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/*.styles.test.tsx"
+    ]
+  },
   "rules": {
     "react-doctor/insecure-crypto-risk": "off"
   }

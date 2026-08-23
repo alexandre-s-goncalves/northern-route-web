@@ -1,0 +1,483 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login.styles > ActionsRow SHOULD match snapshot > standard flex container layout render 1`] = `
+.c0 {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+  padding: 0 4px;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`Login.styles > ButtonLogin SHOULD match snapshot > submit interaction and transition design layout render 1`] = `
+.c0 {
+  align-items: center;
+  background: linear-gradient(     135deg,     #ff8b22,     #ef7e18   );
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(239, 126, 24, 0.3);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-family: Outfit-Regular;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 8px;
+  height: 44px;
+  justify-content: center;
+  padding: 0 24px;
+  text-transform: none;
+  transition: opacity 0.2s,transform 0.1s;
+  width: 100%;
+}
+
+.c0:hover {
+  opacity: 0.95;
+}
+
+.c0:active {
+  transform: scale(0.98);
+}
+
+.c0:disabled {
+  background: #434645;
+  box-shadow: none;
+  color: #999e9c;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.c1 {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.c1:hover {
+  opacity: 0.8;
+}
+
+<div>
+  <button
+    class="c0 c1"
+    type="submit"
+  >
+    Login
+  </button>
+</div>
+`;
+
+exports[`Login.styles > ErrorContainer SHOULD match snapshot > feedback wrapper box structural dimensions render 1`] = `
+.c0 {
+  align-items: center;
+  display: flex;
+  height: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`Login.styles > FieldsContainer SHOULD match snapshot > vertical stack forms configuration layout render 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`Login.styles > GlassCard SHOULD match snapshot > glassmorphism translucent blur layer and shadow layout render 1`] = `
+.c0 {
+  align-items: center;
+  backdrop-filter: blur(16px);
+  background-color: rgba(36, 38, 37, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(17, 19, 18, 0.4);
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  padding: 32px 48px 48px 48px;
+  width: 100%;
+  -webkit-backdrop-filter: blur(16px);
+}
+
+<div>
+  <form
+    action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+    class="c0"
+  />
+</div>
+`;
+
+exports[`Login.styles > HeaderContainer SHOULD match snapshot > centered typography anchor alignment layout render 1`] = `
+.c0 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`Login.styles > InputEmail SHOULD match snapshot > atomic username credentials element layout render 1`] = `
+.c2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #5d615f;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease-in-out,color 0.2s;
+  user-select: none;
+  transform: rotate(0deg);
+}
+
+.c2 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.c2 svg path,
+.c2 svg circle,
+.c2 svg rect {
+  fill: currentColor!important;
+}
+
+.c1 {
+  align-items: center;
+  color: #999e9c;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 16px;
+}
+
+.c0 {
+  align-items: center;
+  background-color: rgba(17, 19, 18, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  padding: 0 16px;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.c0:focus-within {
+  border-color: #ff8b22;
+}
+
+.c3 {
+  background: none;
+  border: none;
+  color: #f0f2f1;
+  flex: 1;
+  font-family: Outfit-Regular;
+  font-size: 14px;
+  font-weight: 400;
+  height: 100%;
+  outline: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.c3::placeholder {
+  color: #5d615f;
+  font-family: Outfit-Regular;
+  font-weight: 400;
+  text-transform: none;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        aria-hidden="true"
+        class="c2"
+      >
+        <svg
+          class="h-full w-full"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5-4-8-4z"
+          />
+        </svg>
+      </div>
+    </div>
+    <input
+      autocomplete="username"
+      class="c3 "
+      id="email"
+      name="email"
+      placeholder="Username"
+      required=""
+      type="email"
+    />
+  </div>
+</div>
+`;
+
+exports[`Login.styles > InputPassword SHOULD match snapshot > atomic security password credentials element layout render 1`] = `
+.c2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #5d615f;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease-in-out,color 0.2s;
+  user-select: none;
+  transform: rotate(0deg);
+}
+
+.c2 svg {
+  width: 100%;
+  height: 100%;
+}
+
+.c2 svg path,
+.c2 svg circle,
+.c2 svg rect {
+  fill: currentColor!important;
+}
+
+.c1 {
+  align-items: center;
+  color: #999e9c;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 16px;
+}
+
+.c0 {
+  align-items: center;
+  background-color: rgba(17, 19, 18, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  padding: 0 16px;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.c0:focus-within {
+  border-color: #ff8b22;
+}
+
+.c3 {
+  background: none;
+  border: none;
+  color: #f0f2f1;
+  flex: 1;
+  font-family: Outfit-Regular;
+  font-size: 14px;
+  font-weight: 400;
+  height: 100%;
+  outline: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.c3::placeholder {
+  color: #5d615f;
+  font-family: Outfit-Regular;
+  font-weight: 400;
+  text-transform: none;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        aria-hidden="true"
+        class="c2"
+      >
+        <svg
+          class="h-full w-full"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
+          />
+        </svg>
+      </div>
+    </div>
+    <input
+      autocomplete="current-password"
+      class="c3 "
+      id="password"
+      name="password"
+      placeholder="Password"
+      required=""
+      type="password"
+    />
+  </div>
+</div>
+`;
+
+exports[`Login.styles > PageWrapper SHOULD match snapshot > geometric radial ambient gradient background element layout render 1`] = `
+.c0 {
+  align-items: center;
+  background: radial-gradient(       circle at top right,       #9d4edd,       transparent 50%     ),radial-gradient(       circle at bottom left,       #104547,       #0b0c10 80%     );
+  background-color: #0c0d14;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100vw;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`Login.styles > TextError SHOULD match snapshot > validation error typography constraints layout render 1`] = `
+.c0 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+  font-family: Outfit-SemiBold;
+  color: #e04c36;
+  text-align: center;
+  text-transform: none;
+  cursor: text;
+}
+
+<div>
+  <span
+    class="c0 "
+    color="#e04c36"
+  >
+    Error
+  </span>
+</div>
+`;
+
+exports[`Login.styles > TextForgotPassword SHOULD match snapshot > interactive hyperlink configuration and text properties layout render 1`] = `
+.c0 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+  font-family: Outfit-Regular;
+  color: #999e9c;
+  text-align: right;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.c1 {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.c1:hover {
+  opacity: 0.8;
+}
+
+<div>
+  <span
+    class="c0 c1"
+    color="#999e9c"
+  >
+    Forgot Password?
+  </span>
+</div>
+`;
+
+exports[`Login.styles > TextTitle SHOULD match snapshot > uppercase headline layout with linear gradient pseudo element line divider render 1`] = `
+.c0 {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: normal;
+  font-family: Outfit-Regular;
+  color: #d9dddb;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: text;
+}
+
+.c1 {
+  display: inline-block;
+  padding-bottom: 16px;
+  position: relative;
+  width: 100%;
+}
+
+.c1::after {
+  background: linear-gradient(       to right,       transparent,       #5d615f,       transparent     );
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+}
+
+<div>
+  <span
+    class="c0 c1"
+    color="#d9dddb"
+  >
+    Welcome
+  </span>
+</div>
+`;

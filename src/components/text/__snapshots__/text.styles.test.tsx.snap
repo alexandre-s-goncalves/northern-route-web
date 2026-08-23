@@ -1,18 +1,40 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Text.styles > TextStyled SHOULD match snapshot with all custom overrides active > complete property injector evaluation 1`] = `
+.c0 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 34px;
+  font-family: Outfit-Bold;
+  color: #079d56;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 <div>
   <span
-    class="sc-bdvwhi bZMZJW"
+    class="c0"
     color="#079d56"
   />
 </div>
 `;
 
 exports[`Text.styles > TextStyled SHOULD match snapshot with default properties > standard render 1`] = `
+.c0 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+  font-family: Outfit-Regular;
+  color: #434645;
+  text-align: start;
+  text-transform: none;
+  cursor: text;
+}
+
 <div>
   <span
-    class="sc-bdvwhi cyiuXj"
+    class="c0"
   />
 </div>
 `;

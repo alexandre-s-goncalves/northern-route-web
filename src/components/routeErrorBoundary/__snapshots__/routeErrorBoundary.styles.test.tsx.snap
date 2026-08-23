@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RouteErrorBoundary.styles > ActionWrapper SHOULD match snapshot > standard structural dimensions design layout render 1`] = `
+.c0 {
+  width: 160px;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`RouteErrorBoundary.styles > Container SHOULD match snapshot > centered background canvas layout configuration render 1`] = `
+.c0 {
+  align-items: center;
+  background-color: #0c0d14;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+<div>
+  <div
+    class="c0"
+  />
+</div>
+`;
+
+exports[`RouteErrorBoundary.styles > Headline SHOULD match snapshot > typography style constraints validation render 1`] = `
+.c0 {
+  color: #f0f2f1;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+<div>
+  <h1
+    class="c0"
+  />
+</div>
+`;

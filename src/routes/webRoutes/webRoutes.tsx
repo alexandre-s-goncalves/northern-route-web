@@ -1,24 +1,29 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { Login } from 'pages/Login/Login';
 import { Home } from 'pages/Home/Home';
-import { ProtectedRoute } from 'routes/protectedRoute';
+import { Login } from 'pages/Login/Login';
+import { ProtectedRoute } from '../protectedRoute/protectedRoute';
+import { RouteErrorBoundary } from 'components/routeErrorBoundary';
 import { RoutePaths } from 'resources/routePaths';
 
 export const webRoutes = createBrowserRouter([
   {
-    path: RoutePaths.LOGIN,
     element: <Login />,
+    errorElement: <RouteErrorBoundary />,
+    path: RoutePaths.LOGIN,
   },
   {
-    path: RoutePaths.HOME,
-    element: (
-      <ProtectedRoute>
-        <Home />
-      </ProtectedRoute>
-    ),
+    element: <ProtectedRoute />,
+    errorElement: <RouteErrorBoundary />,
+    children: [
+      {
+        element: <Home />,
+        path: RoutePaths.HOME,
+      },
+    ],
   },
   {
-    path: RoutePaths.ANY,
     element: <Navigate to={RoutePaths.LOGIN} replace />,
+    errorElement: <RouteErrorBoundary />,
+    path: '*',
   },
 ]);
