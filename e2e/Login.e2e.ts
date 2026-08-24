@@ -22,7 +22,7 @@ test.describe('Login E2E Dashboard Terminal', () => {
       page,
     }) => {
       await page.route(
-        _ => true,
+        () => true,
         async route => {
           if (route.request().method() === 'POST') {
             await route.fulfill({
@@ -54,7 +54,7 @@ test.describe('Login E2E Dashboard Terminal', () => {
       page,
     }) => {
       await page.route(
-        _ => true,
+        () => true,
         async route => {
           if (route.request().method() === 'POST') {
             await route.fulfill({
