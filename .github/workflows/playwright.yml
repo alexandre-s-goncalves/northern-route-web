@@ -7,6 +7,16 @@ on:
     branches: [main, master]
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'Select deployment target environment context'
+        required: true
+        default: 'qas'
+        type: choice
+        options:
+          - qas
+          - prod
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -117,6 +127,7 @@ jobs:
 
   deployment:
     needs: [playwright-e2e, sonar-cloud]
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -129,7 +140,7 @@ jobs:
       - name: Setup Deployment Environment Context
         id: deploy-env
         run: |
-          if [ "${{ github.event_name }}" = "release" ]; then
+          if [ "${{ github.event_name }}" = "release" ] || [ "${{ github.event.inputs.target_env }}" = "prod" ]; then
             echo "mode=prod" >> $GITHUB_OUTPUT
             echo "route=/northern-route-web/" >> $GITHUB_OUTPUT
           else
