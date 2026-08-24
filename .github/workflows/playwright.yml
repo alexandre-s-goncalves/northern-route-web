@@ -148,18 +148,13 @@ jobs:
             echo "route=/northern-route-web/qas/" >> $GITHUB_OUTPUT
           fi
       - name: Build Application Packaging Matrix
-        run: npm run build -- --base=${{ steps.deploy-env.outputs.route }}
-      - name: Organize Multitenant Distribution Tree
         run: |
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
-            mkdir -p deploy_dist
-            cp -r dist/* deploy_dist/
-            cp deploy_dist/index.html deploy_dist/404.html
+            npm run build
           else
-            mkdir -p deploy_dist/qas
-            cp -r dist/* deploy_dist/qas/
-            cp deploy_dist/qas/index.html deploy_dist/qas/404.html
+            npm run build:qa
           fi
+
       - name: Deploy Compiled Artifacts to GitHub Pages Target Branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
