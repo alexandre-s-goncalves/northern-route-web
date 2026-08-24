@@ -15,7 +15,8 @@
     "test:e2e:ui": "playwright test --ui",
     "doctor": "echo \"Full codebase\" | npx -y react-doctor@latest . || true",
     "coverage": "vitest run --coverage",
-    "playwright:install": "playwright install --with-deps"
+    "playwright:install": "playwright install --with-deps",
+    "sonar": "sonar-scanner"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.4",
@@ -67,6 +68,7 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "react-doctor": "^0.7.2",
     "sonar-scanner": "^3.1.0",
+    "sonarqube-scanner": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.65.0",
