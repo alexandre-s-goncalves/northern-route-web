@@ -61,8 +61,6 @@ jobs:
         run: npm run test:e2e
       - name: SonarCloud Scan Execution
         uses: SonarSource/sonarcloud-github-action@v3
-        with:
-          args: -Dsonar.exclusions=src/mocks/**,e2e/**,**/*.test.ts,**/*.test.tsx,**/*.styles.test.tsx -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.projectKey=northern-route-web -Dsonar.projectName="NorthernRoute Web" -Dsonar.projectVersion=1.0.0 -Dsonar.sources=src -Dsonar.test.inclusions=**/*.test.ts,**/*.test.tsx -Dsonar.tests=src
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
