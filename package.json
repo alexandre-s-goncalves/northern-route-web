@@ -16,7 +16,8 @@
     "doctor": "echo \"Full codebase\" | npx -y react-doctor@latest . || true",
     "coverage": "vitest run --coverage",
     "playwright:install": "playwright install --with-deps",
-    "sonar": "sonar-scanner"
+    "sonar": "sonar-scanner",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.4",

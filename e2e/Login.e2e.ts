@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Login E2E Dashboard Terminal', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/login');
+    await page.goto('./login');
   });
 
   test.describe('Rendering Scenarios', () => {
@@ -89,6 +89,7 @@ test.describe('Login E2E Dashboard Terminal', () => {
       await expect(
         page.getByText('NorthernRoute Logistics - Home Dashboard'),
       ).toBeVisible();
+      await page.waitForURL('**/');
     });
   });
 });

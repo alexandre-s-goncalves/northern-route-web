@@ -55,6 +55,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Build Application
         run: npm run build --if-present
+      - name: Create GitHub Pages SPA Fallback
+        run: cp dist/index.html dist/404.html
       - name: Run Unit Tests with Coverage
         run: npm run coverage
       - name: Run Playwright tests
