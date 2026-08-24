@@ -33,14 +33,14 @@ const endpointCollection = [
         path: '/api/auth/login',
         label: 'Correct Password Scenario',
         isSuccess: true,
-        payload: { email: 'driver@test.com', passwordHash: 'Secure123' },
+        payload: { email: 'test@test.com', passwordHash: 'Test123' },
       },
       {
         method: 'POST',
         path: '/api/auth/login',
         label: 'Wrong Password Scenario',
         isSuccess: false,
-        payload: { email: 'driver@test.com', passwordHash: 'WrongPassword123' },
+        payload: { email: 'test@test.com', passwordHash: 'WrongPassword123' },
       },
     ],
   },
@@ -64,12 +64,18 @@ app.post('/api/auth/login', (req, res) => {
   const { email, passwordHash } = req.body;
 
   if (email === 'test@test.com' && passwordHash === 'Test123') {
+    const usuario = {
+      userId: 'mock-id-123',
+      name: 'Test test',
+      email: 'test@test.com',
+      role: 'ADMIN',
+    };
     const generatedToken = jwt.sign(
       {
-        sub: 'mock-id-123',
-        name: 'Test test',
-        email: 'test@test.com',
-        role: 'ADMIN',
+        sub: usuario.userId,
+        name: usuario.name,
+        email: usuario.email,
+        role: usuario.role,
       },
       JWT_SECRET,
       { expiresIn: '1h' },
@@ -79,10 +85,10 @@ app.post('/api/auth/login', (req, res) => {
       isSuccess: true,
       errorMessage: null,
       data: {
-        userId: 'mock-id-123',
-        name: 'Alexandre Santos',
-        email: 'driver@test.com',
-        role: 'DRIVER',
+        userId: usuario.userId,
+        name: usuario.name,
+        email: usuario.email,
+        role: usuario.role,
         token: generatedToken,
       },
     });
