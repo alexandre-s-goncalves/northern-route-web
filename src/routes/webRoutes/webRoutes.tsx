@@ -5,25 +5,30 @@ import { ProtectedRoute } from '../protectedRoute/protectedRoute';
 import { RouteErrorBoundary } from 'components/routeErrorBoundary';
 import { RoutePaths } from 'resources/routePaths';
 
-export const webRoutes = createBrowserRouter([
+export const webRoutes = createBrowserRouter(
+  [
+    {
+      element: <Login />,
+      errorElement: <RouteErrorBoundary />,
+      path: RoutePaths.LOGIN,
+    },
+    {
+      children: [
+        {
+          element: <Home />,
+          path: RoutePaths.HOME,
+        },
+      ],
+      element: <ProtectedRoute />,
+      errorElement: <RouteErrorBoundary />,
+    },
+    {
+      element: <Navigate to={RoutePaths.LOGIN} replace />,
+      errorElement: <RouteErrorBoundary />,
+      path: '*',
+    },
+  ],
   {
-    element: <Login />,
-    errorElement: <RouteErrorBoundary />,
-    path: RoutePaths.LOGIN,
+    basename: import.meta.env.BASE_URL,
   },
-  {
-    element: <ProtectedRoute />,
-    errorElement: <RouteErrorBoundary />,
-    children: [
-      {
-        element: <Home />,
-        path: RoutePaths.HOME,
-      },
-    ],
-  },
-  {
-    element: <Navigate to={RoutePaths.LOGIN} replace />,
-    errorElement: <RouteErrorBoundary />,
-    path: '*',
-  },
-]);
+);
