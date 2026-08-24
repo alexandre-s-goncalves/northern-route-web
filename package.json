@@ -16,7 +16,7 @@
     "doctor": "echo \"Full codebase\" | npx -y react-doctor@latest . || true",
     "coverage": "vitest run --coverage",
     "playwright:install": "playwright install --with-deps",
-    "prepare": "husky install"
+    "sonar": "sonar-scanner"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.4",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.62.1",
     "@secretlint/quick-start": "^12.0.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.9.1",
@@ -68,6 +68,7 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "react-doctor": "^0.7.2",
     "sonar-scanner": "^3.1.0",
+    "sonarqube-scanner": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.65.0",
