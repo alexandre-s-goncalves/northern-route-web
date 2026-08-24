@@ -89,7 +89,7 @@ test.describe('Login E2E Dashboard Terminal', () => {
       await expect(
         page.getByText('NorthernRoute Logistics - Home Dashboard'),
       ).toBeVisible();
-      await page.waitForURL('**/home');
+      await page.waitForURL('**/');
     });
   });
 });
