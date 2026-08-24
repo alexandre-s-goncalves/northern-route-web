@@ -2,9 +2,11 @@ name: Quality & Automation Pipeline
 
 on:
   push:
-    branches: [main, master, fix/*, feat/*]
+    branches: [main, master]
   pull_request:
     branches: [main, master]
+  release:
+    types: [published]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: lts/*
+          node-version: '20'
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Run React Doctor Diagnostic Guard
@@ -34,9 +36,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: lts/*
+          node-version: '20'
       - name: Install dependencies
         run: npm ci --ignore-scripts
+      - name: Check Code Linting
+        run: npm run lint
+      - name: Check Code Formatting
+        run: npm run format -- --check
       - name: Set up Java 21 Runtime Environment
         uses: actions/setup-java@v4
         with:
@@ -56,7 +62,7 @@ jobs:
       - name: Setup Deployment Environment Context
         id: deploy-env
         run: |
-          if [ "${{ github.ref_name }}" = "main" ] || [ "${{ github.ref_name }}" = "master" ]; then
+          if [ "${{ github.event_name }}" = "release" ]; then
             echo "mode=prod" >> $GITHUB_OUTPUT
             echo "route=/northern-route-web/" >> $GITHUB_OUTPUT
           else
@@ -64,9 +70,7 @@ jobs:
             echo "route=/northern-route-web/qas/" >> $GITHUB_OUTPUT
           fi
       - name: Build Application Packaging Matrix
-        env:
-          VITE_APP_BASE_ROUTE: ${{ steps.deploy-env.outputs.route }}
-        run: npm run build --if-present
+        run: npm run build -- --base=${{ steps.deploy-env.outputs.route }}
       - name: Run Unit Tests with Coverage
         run: npm run coverage
       - name: Run Playwright tests
