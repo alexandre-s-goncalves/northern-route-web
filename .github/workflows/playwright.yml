@@ -140,13 +140,17 @@ jobs:
       - name: Setup Deployment Environment Context
         id: deploy-env
         run: |
-          if [ "${{ github.event_name }}" = "release" ] || [ "${{ github.event.inputs.target_env }}" = "prod" ]; then
+          if [ "${{ github.ref_name }}" = "main" ] || [ "${{ github.ref_name }}" = "master" ]; then
             echo "mode=prod" >> $GITHUB_OUTPUT
             echo "route=/northern-route-web/" >> $GITHUB_OUTPUT
           else
             echo "mode=qas" >> $GITHUB_OUTPUT
             echo "route=/northern-route-web/qas/" >> $GITHUB_OUTPUT
           fi
+      - name: Inject Dynamic Environment Variables Tokens
+        if: steps.deploy-env.outputs.mode == 'qas'
+        run: |
+          sed -i "s|api_url_qa|${{ vars.VITE_API_URL_QA }}|g" .env.qa
       - name: Build Application Packaging Matrix
         run: |
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
