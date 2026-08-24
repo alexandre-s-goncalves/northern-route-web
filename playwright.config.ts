@@ -30,12 +30,12 @@ export default defineConfig({
   testMatch: '**/*.e2e.ts',
   timeout: 30000,
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5173/northern-route-web/',
     trace: 'on-first-retry',
   },
   webServer: {
     command: 'npm run dev',
     reuseExistingServer: !isCI,
-    url: 'http://localhost:5173',
+    url: 'http://localhost:5173/northern-route-web/',
   },
 });
