@@ -150,7 +150,8 @@ jobs:
       - name: Inject Dynamic Environment Variables Tokens
         if: steps.deploy-env.outputs.mode == 'qas'
         run: |
-          sed -i "s|api_url_qa|${{ vars.VITE_API_URL_QA }}|g" .env.qa
+          sed -i 's|VITE_API_URL=.*|VITE_API_URL=${{ vars.VITE_API_URL_QA }}|g' .env.qa
+
       - name: Build Application Packaging Matrix
         run: |
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
