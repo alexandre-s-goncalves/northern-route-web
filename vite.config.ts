@@ -2,8 +2,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
+const isQaBuild =
+  process.env.NODE_ENV === 'qa' || process.env.NODE_ENV === 'staging';
+const baseFolder = isQaBuild
+  ? '/northern-route-web/qas/'
+  : '/northern-route-web/';
+
 export default defineConfig({
-  base: '/northern-route-web/',
+  base: baseFolder,
   plugins: [
     react(),
     svgr({
