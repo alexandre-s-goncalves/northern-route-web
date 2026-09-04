@@ -159,9 +159,8 @@ jobs:
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
             npm run build
           else
-            npm run build:qa
+            NODE_ENV=qa npm run build:qa
           fi
-
       - name: Organize Multitenant Distribution Tree
         run: |
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
