@@ -4,7 +4,12 @@
     <meta charset="utf-8" />
     <title>Northern Route Logistics</title>
     <script type="text/javascript">
-      var pathSegmentsToKeep = 2;
+      var segments = window.location.pathname.split('/');
+      var pathSegmentsToKeep =
+        segments.includes('northern-route-web') !== -1
+          ? segments.indexOf('northern-route-web') + 1
+          : 1;
+
       var l = window.location;
       l.replace(
         l.protocol +
