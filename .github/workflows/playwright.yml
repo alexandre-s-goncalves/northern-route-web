@@ -132,6 +132,8 @@ jobs:
     needs: [playwright-e2e, sonar-cloud]
     if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    env:
+      VITE_API_URL: ${{ vars.VITE_API_URL_QA }}
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node Runtime
@@ -152,14 +154,13 @@ jobs:
             echo "route=/northern-route-web/qas/" >> $GITHUB_OUTPUT
           fi
       - name: Build Application Packaging Matrix
-        env:
-          VITE_API_URL: ${{ vars.VITE_API_URL_QA }}
         run: |
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
             npm run build
           else
             npm run build:qa
           fi
+
       - name: Organize Multitenant Distribution Tree
         run: |
           if [ "${{ steps.deploy-env.outputs.mode }}" = "prod" ]; then
