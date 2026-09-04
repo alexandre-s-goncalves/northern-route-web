@@ -28,10 +28,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup Node Runtime
+        uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '20'
+          node-version: '24'
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Run React Doctor Diagnostic Guard
@@ -46,7 +47,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '20'
+          node-version: '24'
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Check Code Linting
@@ -63,7 +64,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '20'
+          node-version: '24'
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Run Unit Tests with Coverage
@@ -84,7 +85,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '20'
+          node-version: '24'
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Set up Java 21 Runtime Environment
@@ -130,7 +131,7 @@ jobs:
 
   deployment:
     needs: [playwright-e2e, sonar-cloud]
-    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'))
     runs-on: ubuntu-latest
     env:
       VITE_API_URL: ${{ vars.VITE_API_URL_QA }}
@@ -140,7 +141,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'npm'
-          node-version: '20'
+          node-version: '24'
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Setup Deployment Environment Context
@@ -170,6 +171,7 @@ jobs:
           else
             mkdir -p deploy_dist/qas
             cp -r dist/* deploy_dist/qas/
+            cp dist/404.html deploy_dist/404.html
             cp deploy_dist/qas/index.html deploy_dist/qas/404.html
           fi
       - name: Deploy Compiled Artifacts to GitHub Pages Target Branch
