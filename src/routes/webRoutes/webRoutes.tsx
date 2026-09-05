@@ -29,6 +29,6 @@ export const webRoutes = createBrowserRouter(
     },
   ],
   {
-    basename: import.meta.env.BASE_URL,
+    basename: RoutePaths.HOME,
   },
 );
