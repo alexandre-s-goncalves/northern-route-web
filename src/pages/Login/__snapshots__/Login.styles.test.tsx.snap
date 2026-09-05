@@ -229,6 +229,14 @@ exports[`Login.styles > InputEmail SHOULD match snapshot > atomic username crede
   transition: background-color 9999s ease-in-out 0s;
 }
 
+.c3::-ms-reveal,
+.c3::-ms-clear,
+.c3::-webkit-password-toggle-button {
+  display: none!important;
+  height: 0;
+  width: 0;
+}
+
 <div>
   <div
     class="c0"
@@ -347,6 +355,14 @@ exports[`Login.styles > InputPassword SHOULD match snapshot > atomic security pa
   -webkit-text-fill-color: #f0f2f1!important;
   box-shadow: 0 0 0px 1000px transparent inset!important;
   transition: background-color 9999s ease-in-out 0s;
+}
+
+.c3::-ms-reveal,
+.c3::-ms-clear,
+.c3::-webkit-password-toggle-button {
+  display: none!important;
+  height: 0;
+  width: 0;
 }
 
 <div>

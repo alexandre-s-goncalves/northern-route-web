@@ -74,4 +74,12 @@ export const StyledInput = styled.input.withConfig({
     box-shadow: 0 0 0px 1000px transparent inset !important;
     transition: background-color 9999s ease-in-out 0s;
   }
+
+  &::-ms-reveal,
+  &::-ms-clear,
+  &::-webkit-password-toggle-button {
+    display: none !important;
+    height: 0;
+    width: 0;
+  }
 `;

@@ -127,6 +127,14 @@ exports[`Input.styles > StyledInput SHOULD match snapshot > WHEN custom placehol
   transition: background-color 9999s ease-in-out 0s;
 }
 
+.c0::-ms-reveal,
+.c0::-ms-clear,
+.c0::-webkit-password-toggle-button {
+  display: none!important;
+  height: 0;
+  width: 0;
+}
+
 <div>
   <input
     class="c0"
@@ -165,6 +173,14 @@ exports[`Input.styles > StyledInput SHOULD match snapshot > WHEN rendering stand
   -webkit-text-fill-color: #f0f2f1!important;
   box-shadow: 0 0 0px 1000px transparent inset!important;
   transition: background-color 9999s ease-in-out 0s;
+}
+
+.c0::-ms-reveal,
+.c0::-ms-clear,
+.c0::-webkit-password-toggle-button {
+  display: none!important;
+  height: 0;
+  width: 0;
 }
 
 <div>
