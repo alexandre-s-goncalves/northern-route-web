@@ -81,15 +81,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - name: Get Playwright version
-        id: playwright-version
-        run: echo "version=$(npm ls @playwright/test --json | jq -r '.dependencies."@playwright/test".version')" >> $GITHUB_OUTPUT
-      - name: Cache Playwright Browsers
-        id: cache-playwright
-        uses: actions/cache@v4
-        with:
-          key: playwright-${{ steps.playwright-version.outputs.version }}
-          path: ~/.cache/ms-playwright
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright Tests
@@ -116,3 +107,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  deployment:
+    needs: [playwright-e2e, sonar-cloud]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node Runtime
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: '24'
+      - name: Install Vercel CLI Global Binary
+        run: npm install -g vercel
+      - name: Pull Vercel Environment Meta Configurations
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Execute Verified Quality Remote Cloud Build
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Verified Artifacts to Target Vercel Edge Nodes
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
