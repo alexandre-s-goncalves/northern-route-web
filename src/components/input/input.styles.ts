@@ -12,16 +12,12 @@ export interface StyledInputComponentsProps {
   $textConfig?: Omit<TextProps, 'children'>;
 }
 
-export const IconContainer = styled.div.withConfig({
-  shouldForwardProp: prop => prop !== '$invert',
-})<StyledInputComponentsProps>`
+export const Container = styled.div`
   align-items: center;
   color: ${colors['neutral-500']};
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  margin-left: ${({ $invert }) => ($invert ? `${spaces.small}px` : '0')};
-  margin-right: ${({ $invert }) => ($invert ? '0' : `${spaces.small}px`)};
 `;
 
 export const InputWrapper = styled.div.withConfig({
@@ -49,22 +45,33 @@ export const StyledInput = styled.input.withConfig({
   shouldForwardProp: prop =>
     !['$placeholderConfig', '$textConfig'].includes(prop),
 })<StyledInputComponentsProps>`
+  flex: 1;
   background: none;
   border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  margin: 0 ${spaces.small}px;
   color: ${({ $textConfig }) => $textConfig?.color ?? colors['neutral-100']};
-  flex: 1;
   font-family: ${({ $textConfig }) => ($textConfig?.variant ? fonts[$textConfig.variant] : fonts.regular)};
   font-size: ${({ $textConfig }) => ($textConfig?.size ? `${$textConfig.size}px` : '14px')};
   font-weight: ${({ $textConfig }) => $textConfig?.weight ?? 400};
-  height: 100%;
-  outline: none;
   text-transform: ${({ $textConfig }) => $textConfig?.transform ?? 'none'};
-  width: 100%;
 
   &::placeholder {
     color: ${({ $placeholderConfig }) => $placeholderConfig?.color ?? colors['neutral-700']};
     font-family: ${({ $placeholderConfig }) => ($placeholderConfig?.variant ? fonts[$placeholderConfig.variant] : fonts.regular)};
     font-weight: ${({ $placeholderConfig }) => $placeholderConfig?.weight ?? 400};
     text-transform: ${({ $placeholderConfig }) => $placeholderConfig?.transform ?? 'none'};
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: ${({ $textConfig }) => $textConfig?.color ?? colors['neutral-100']} !important;
+    box-shadow: 0 0 0px 1000px transparent inset !important;
+    transition: background-color 9999s ease-in-out 0s;
   }
 `;

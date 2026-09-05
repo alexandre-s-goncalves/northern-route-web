@@ -4,14 +4,9 @@ import 'jest-styled-components';
 import * as S from './input.styles';
 
 describe('Input.styles', () => {
-  describe('IconContainer SHOULD match snapshot', () => {
-    test('WHEN rendering with default orientation', () => {
-      const { container } = render(<S.IconContainer />);
-      expect(container).toMatchSnapshot();
-    });
-
-    test('WHEN rendering with inverted orientation', () => {
-      const { container } = render(<S.IconContainer $invert />);
+  describe('Container SHOULD match snapshot', () => {
+    test('WHEN rendering with default properties', () => {
+      const { container } = render(<S.Container />);
       expect(container).toMatchSnapshot();
     });
   });

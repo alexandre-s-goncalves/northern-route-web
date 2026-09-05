@@ -177,8 +177,6 @@ exports[`Login.styles > InputEmail SHOULD match snapshot > atomic username crede
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  margin-left: 0;
-  margin-right: 16px;
 }
 
 .c0 {
@@ -200,17 +198,18 @@ exports[`Login.styles > InputEmail SHOULD match snapshot > atomic username crede
 }
 
 .c3 {
+  flex: 1;
   background: none;
   border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  margin: 0 16px;
   color: #f0f2f1;
-  flex: 1;
   font-family: Outfit-Regular;
   font-size: 14px;
   font-weight: 400;
-  height: 100%;
-  outline: none;
   text-transform: none;
-  width: 100%;
 }
 
 .c3::placeholder {
@@ -218,6 +217,16 @@ exports[`Login.styles > InputEmail SHOULD match snapshot > atomic username crede
   font-family: Outfit-Regular;
   font-weight: 400;
   text-transform: none;
+}
+
+.c3:-webkit-autofill,
+.c3:-webkit-autofill:hover,
+.c3:-webkit-autofill:focus,
+.c3:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset!important;
+  -webkit-text-fill-color: #f0f2f1!important;
+  box-shadow: 0 0 0px 1000px transparent inset!important;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 <div>
@@ -288,8 +297,6 @@ exports[`Login.styles > InputPassword SHOULD match snapshot > atomic security pa
   display: flex;
   flex-shrink: 0;
   justify-content: center;
-  margin-left: 0;
-  margin-right: 16px;
 }
 
 .c0 {
@@ -311,17 +318,18 @@ exports[`Login.styles > InputPassword SHOULD match snapshot > atomic security pa
 }
 
 .c3 {
+  flex: 1;
   background: none;
   border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  margin: 0 16px;
   color: #f0f2f1;
-  flex: 1;
   font-family: Outfit-Regular;
   font-size: 14px;
   font-weight: 400;
-  height: 100%;
-  outline: none;
   text-transform: none;
-  width: 100%;
 }
 
 .c3::placeholder {
@@ -329,6 +337,16 @@ exports[`Login.styles > InputPassword SHOULD match snapshot > atomic security pa
   font-family: Outfit-Regular;
   font-weight: 400;
   text-transform: none;
+}
+
+.c3:-webkit-autofill,
+.c3:-webkit-autofill:hover,
+.c3:-webkit-autofill:focus,
+.c3:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset!important;
+  -webkit-text-fill-color: #f0f2f1!important;
+  box-shadow: 0 0 0px 1000px transparent inset!important;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 <div>
@@ -362,7 +380,6 @@ exports[`Login.styles > InputPassword SHOULD match snapshot > atomic security pa
       name="password"
       placeholder="Password"
       required=""
-      type="password"
     />
   </div>
 </div>

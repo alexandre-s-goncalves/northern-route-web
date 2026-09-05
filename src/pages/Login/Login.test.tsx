@@ -1,6 +1,6 @@
 import { act } from 'react';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Login } from './Login';
 import { RoutePaths } from 'resources/routePaths';
 import { useLoginMutation } from 'hooks/useAuth';
@@ -33,20 +33,8 @@ describe('Login Component', () => {
     vi.clearAllMocks();
   });
 
-  describe('Rendering Scenarios', () => {
-    test('WHEN dashboard authentication terminal wakes up SHOULD mount structural layout and core operation credential fields cleanly', () => {
-      component.rerender(<Login />);
-
-      expect(component.getByText('Welcome')).toBeInTheDocument();
-      expect(component.getByPlaceholderText('Username')).toBeInTheDocument();
-      expect(component.getByPlaceholderText('Password')).toBeInTheDocument();
-      expect(component.getByTestId('button-login')).toBeInTheDocument();
-      expect(component.getByText('Forgot Password?')).toBeInTheDocument();
-    });
-  });
-
   describe('Behavioral Scenarios', () => {
-    test('WHEN form is submitted and credentials are invalid SHOULD display exact API error message content within container', async () => {
+    test('WHEN form is submitted and credentials are field invalid SHOULD display exact API error message content within container', async () => {
       component.rerender(<Login />);
 
       mockMutateAsync.mockResolvedValueOnce({
@@ -54,9 +42,12 @@ describe('Login Component', () => {
         isSuccess: false,
       });
 
-      const emailInput = component.getByPlaceholderText('Username');
-      const passwordInput = component.getByPlaceholderText('Password');
-      const loginButton = component.getByTestId('button-login');
+      const emailWrapper = screen.getByTestId('input-email');
+      const passwordWrapper = screen.getByTestId('input-password');
+      const loginButton = screen.getByTestId('button-login');
+
+      const emailInput = emailWrapper.querySelector('input')!;
+      const passwordInput = passwordWrapper.querySelector('input')!;
 
       fireEvent.change(emailInput, { target: { value: 'wrong@northern.com' } });
       fireEvent.change(passwordInput, { target: { value: 'wrongpass' } });
@@ -70,7 +61,7 @@ describe('Login Component', () => {
         passwordHash: 'wrongpass',
       });
 
-      const errorText = await component.findByText(
+      const errorText = await screen.findByText(
         'Invalid username or password credentials.',
       );
       expect(errorText).toBeInTheDocument();
@@ -84,9 +75,12 @@ describe('Login Component', () => {
         isSuccess: true,
       });
 
-      const emailInput = component.getByPlaceholderText('Username');
-      const passwordInput = component.getByPlaceholderText('Password');
-      const loginButton = component.getByTestId('button-login');
+      const emailWrapper = screen.getByTestId('input-email');
+      const passwordWrapper = screen.getByTestId('input-password');
+      const loginButton = screen.getByTestId('button-login');
+
+      const emailInput = emailWrapper.querySelector('input')!;
+      const passwordInput = passwordWrapper.querySelector('input')!;
 
       fireEvent.change(emailInput, {
         target: { value: 'driver@northernroute.com' },
@@ -115,9 +109,12 @@ describe('Login Component', () => {
         isSuccess: false,
       });
 
-      const emailInput = component.getByPlaceholderText('Username');
-      const passwordInput = component.getByPlaceholderText('Password');
-      const loginButton = component.getByTestId('button-login');
+      const emailWrapper = screen.getByTestId('input-email');
+      const passwordWrapper = screen.getByTestId('input-password');
+      const loginButton = screen.getByTestId('button-login');
+
+      const emailInput = emailWrapper.querySelector('input')!;
+      const passwordInput = passwordWrapper.querySelector('input')!;
 
       fireEvent.change(emailInput, { target: { value: 'driver@test.com' } });
       fireEvent.change(passwordInput, { target: { value: 'test' } });
@@ -126,10 +123,36 @@ describe('Login Component', () => {
         fireEvent.submit(loginButton.closest('form')!);
       });
 
-      const fallbackError = await component.findByText(
-        'Authentication failed.',
-      );
+      const fallbackError = await screen.findByText('Authentication failed.');
       expect(fallbackError).toBeInTheDocument();
+    });
+
+    test('WHEN password visibility toggle button is clicked SHOULD alternate input visibility type properties natively', () => {
+      component.rerender(<Login />);
+
+      const passwordWrapper = screen.getByTestId('input-password');
+      const passwordInput = passwordWrapper.querySelector('input')!;
+      const toggleButton = passwordWrapper.querySelector('button')!;
+
+      expect(passwordInput.getAttribute('type')).toBe('password');
+
+      fireEvent.click(toggleButton);
+      expect(passwordInput.getAttribute('type')).toBe('text');
+
+      fireEvent.click(toggleButton);
+      expect(passwordInput.getAttribute('type')).toBe('password');
+    });
+  });
+
+  describe('Rendering Scenarios', () => {
+    test('WHEN dashboard authentication terminal wakes up SHOULD mount structural layout and core operation credential fields cleanly', () => {
+      component.rerender(<Login />);
+
+      expect(screen.getByText('Welcome')).toBeInTheDocument();
+      expect(screen.getByTestId('input-email')).toBeInTheDocument();
+      expect(screen.getByTestId('input-password')).toBeInTheDocument();
+      expect(screen.getByTestId('button-login')).toBeInTheDocument();
+      expect(screen.getByText('Forgot Password?')).toBeInTheDocument();
     });
   });
 });

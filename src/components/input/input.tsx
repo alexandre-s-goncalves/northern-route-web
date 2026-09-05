@@ -1,7 +1,7 @@
-import { type InputHTMLAttributes } from 'react';
-import { type IconProps, Icon } from 'components/icon';
-import { type TextProps } from 'components/text/text.styles';
+import { Icon, IconProps } from 'components/icon';
 import { colors } from 'resources/colors';
+import { InputHTMLAttributes, ReactNode } from 'react';
+import { TextProps } from 'components/text/text.styles';
 import * as S from './input.styles';
 
 export interface InputProps extends Omit<
@@ -15,6 +15,7 @@ export interface InputProps extends Omit<
   placeholder?: string;
   placeholderConfig?: Omit<TextProps, 'children'>;
   textConfig?: Omit<TextProps, 'children'>;
+  rightElement?: ReactNode;
 }
 
 export const Input = ({
@@ -24,6 +25,7 @@ export const Input = ({
   invert = false,
   placeholder,
   placeholderConfig,
+  rightElement,
   textConfig,
   ...rest
 }: Readonly<InputProps>) => {
@@ -32,9 +34,9 @@ export const Input = ({
   return (
     <S.InputWrapper data-testid={testId} $hasError={hasError} $invert={invert}>
       {icon && (
-        <S.IconContainer $invert={invert}>
+        <S.Container>
           <Icon color={icon.color ?? defaultTextColor} {...icon} />
-        </S.IconContainer>
+        </S.Container>
       )}
       <S.StyledInput
         placeholder={placeholder}
@@ -42,6 +44,7 @@ export const Input = ({
         $textConfig={textConfig}
         {...rest}
       />
+      {rightElement && <S.Container>{rightElement}</S.Container>}
     </S.InputWrapper>
   );
 };
