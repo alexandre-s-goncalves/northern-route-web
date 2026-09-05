@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IconButton Styled Components Snapshots > ButtonWrapper Matrix > should match snapshot layout when invert parameter is explicitly false 1`] = `
+<button
+  class="sc-bdvwhi eRAWYt"
+/>
+`;
+
+exports[`IconButton Styled Components Snapshots > ButtonWrapper Matrix > should match snapshot layout when invert parameter is explicitly true 1`] = `
+<button
+  class="sc-bdvwhi eRAWYt"
+/>
+`;
+
+exports[`IconButton Styled Components Snapshots > IconContainer Geometry > WHEN rendering with default orientation 1`] = `
+<div
+  class="sc-gsDMPd dzjunG"
+/>
+`;
+
+exports[`IconButton Styled Components Snapshots > IconContainer Geometry > WHEN rendering with inverted orientation 1`] = `
+<div
+  class="sc-gsDMPd fBEzEL"
+/>
+`;

@@ -1,12 +1,15 @@
+import styled from 'styled-components';
 import LockSVG from 'assets/icons/iLock.svg?react';
 import UserSVG from 'assets/icons/iUser.svg?react';
+import EyeSVG from 'assets/icons/iEye.svg?react';
+import Eye_offSVG from 'assets/icons/iEye_off.svg?react';
 import { Button } from 'components/button';
 import { Input } from 'components/input';
 import { Text } from 'components/text';
 import { alpha } from 'utils/alpha';
 import { colors } from 'resources/colors';
 import { spaces } from 'resources/spaces';
-import styled from 'styled-components';
+import { Icon } from 'components/icon';
 
 export const ActionsRow = styled.div`
   display: flex;
@@ -59,6 +62,18 @@ export const GlassCard = styled.form`
   -webkit-backdrop-filter: blur(${spaces.small}px);
 `;
 
+export const EyeIcon = styled(Icon).attrs({
+  color: colors['neutral-700'],
+  icon: EyeSVG,
+  size: 20,
+})``;
+
+export const EyeOffIcon = styled(Icon).attrs({
+  color: colors['neutral-700'],
+  icon: Eye_offSVG,
+  size: 20,
+})``;
+
 export const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
@@ -84,7 +99,6 @@ export const InputPassword = styled(Input).attrs({
   name: 'password',
   placeholder: 'Password',
   required: true,
-  type: 'password',
 })``;
 
 export const PageWrapper = styled.div`

@@ -1,7 +1,8 @@
-import { useActionState, useEffect } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from 'hooks/useAuth';
 import { RoutePaths } from 'resources/routePaths';
+import { IconButton } from 'components/iconButton';
 import * as S from './Login.styles';
 
 interface FormState {
@@ -16,6 +17,7 @@ interface FormState {
 export const Login = () => {
   const navigate = useNavigate();
   const { mutateAsync } = useLoginMutation();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [state, formAction, isPending] = useActionState(
     async (_: FormState | null, formData: FormData): Promise<FormState> => {
@@ -61,6 +63,14 @@ export const Login = () => {
             testId="input-password"
             disabled={isPending}
             hasError={!!state?.error}
+            type={showPassword ? 'text' : 'password'}
+            rightElement={
+              <IconButton
+                type="button"
+                icon={showPassword ? S.EyeOffIcon : S.EyeIcon}
+                onClick={() => setShowPassword(prev => !prev)}
+              />
+            }
           />
         </S.FieldsContainer>
         <S.ActionsRow>
