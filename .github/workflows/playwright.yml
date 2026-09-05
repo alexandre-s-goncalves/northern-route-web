@@ -2,9 +2,9 @@ name: Quality & Automation Pipeline
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, qas]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, qas]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
